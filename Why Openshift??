@@ -1,0 +1,15 @@
+Openshift is most used enterprise grade kubernetes platform in the market
+    Note: Pod to Pod communication can be taken care by CNI(Container Network Interface)
+          To run pods we need container run time and to keep pod secure we have Network policies
+Problem with opensource kubernetes and advantage of Openshift?
+   * Kubernetes is quite robust(strong/healthy) platform. It works very smooth and tested and used by lot of people.
+   * there are 2 major things, that made organaziation to back out from k8s and search for Enterprise Grade K8S platform
+   * Even though k8s is free and opensource. Anyone can download and install on their VM/physical server and use it. 
+It has some disadvantage as below
+   1. Lack of support. Lets say we encounter some issue with k8s cluster. it can be existing bug which has workaround but not sure how to implement it.
+      or we might get any question related to scale up based on some scenario. we might get into any kind of question.
+      For that we have to raise a issue in k8s github and wait for one of the k8s engineers/contributor to respond back. It may happen eventually 
+      but it will take more time as its opensource community. Enterprise will not prefer thiss.
+   2. Management overhead. Being an opensource project, k8s is not opiniated which means kubernetes will not tell you to use k8s only on ubuntu vm or 
+      only on centos or on redhat vm. It will tell you the instructions, we have to install and manage it.
+      Managing huge large scale appication in opensouce k8s is very difficult without support.
