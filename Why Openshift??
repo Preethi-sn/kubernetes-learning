@@ -13,3 +13,30 @@ It has some disadvantage as below
    2. Management overhead. Being an opensource project, k8s is not opiniated which means kubernetes will not tell you to use k8s only on ubuntu vm or 
       only on centos or on redhat vm. It will tell you the instructions, we have to install and manage it.
       Managing huge large scale appication in opensouce k8s is very difficult without support.
+
+Because of these 2 major problem, organization look for ""Enterprise Grade Kubernetes Platform"
+                                                                            |_Redhat(Openshift)
+                                                                            |_EKS (Amazon)    
+                                                                            |_AKS(Azure)
+                                                                            |_GCP(Google)
+                                                                            |_Ranchers
+
+
+Which means we can say companys are not using Opensource k8s, they are using it underhood and enhance with additional flavor and 
+selling to customers with lot of added features and support. 
+
+
+Redhat Openshift has 2 offerings -> 1. Self-Managed & 2. service(Managed)
+
+
+
+
+
+
+
+
+
+
+
+
+
