@@ -76,7 +76,9 @@ https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/
 
  5.Command to delete the secrets:
                #oc delete secret mysecret -n openshift-config
- 
+ 6. Command to delete the identity and users
+           #oc delete identity --all
+           #oc delete user --all
 
  To get the pod details of another project(namespace) // -n -> namespace , openshift-authentication -> project name
 whenever user gets created in openshift cluster, those details are maintained in oauth-pod under "openshift-authentication"
