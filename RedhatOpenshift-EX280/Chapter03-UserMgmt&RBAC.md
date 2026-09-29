@@ -1,11 +1,11 @@
-**Chapter:03 - User Management**
+#chapter:03 - User Management
 1. Initiate lab: To make the cluster ready for the excerise
 2. login with admini,developer,kubadmin
 oc login -u kubeadmin -p yyUai-QPoXs-xBYSN-UJITn https://api.ocp4.example.com:6443
 3. #oc new-project user-demo -> create new project
 4. #oc whoami -t
-                               **Step:1 - Create user using htpasswd tool**
-6. To create user, we have to use htpasswd tool. check if its installed (#htpasswd). If not, install it.
+##Step:1 - Create user using htpasswd tool
+       To create user, we have to use htpasswd tool. check if its installed (#htpasswd). If not, install it.
        **sudo yum install httpd-tools -y**
 7. Create directory **#mkdir user-details** directory name can be anything.
 8. Create user, **#htpasswd -c -b -B user-details/users.config <username> <password>**
