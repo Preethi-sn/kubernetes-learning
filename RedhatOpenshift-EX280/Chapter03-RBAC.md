@@ -39,7 +39,7 @@ Whoever is having the write access they can be able to deploy the app on that pr
 
 We can also restore the Self-provisioner role to the group which revoke earlier
 
-oc adm policy add-cluster-role-to-group --rolebinding-name self-provisioners self-provisioner system:authenticated:oauth
+          oc adm policy add-cluster-role-to-group --rolebinding-name self-provisioners self-provisioner system:authenticated:oauth
 
 
 
