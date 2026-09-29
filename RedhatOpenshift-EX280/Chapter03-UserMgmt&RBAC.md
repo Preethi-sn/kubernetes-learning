@@ -58,18 +58,17 @@ https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/
 <img width="1530" height="472" alt="image" src="https://github.com/user-attachments/assets/9a02f3e8-1e5e-4282-8fb2-0bbdd3bddf2b" />
 
 ## Extract the secrets from cluster and add the new user in existing file
-Unfortunately, if the user-details directory is deleted locally, we can extract it from cluster from openshift-config project.
+1. Unfortunately, if the user-details directory is deleted locally, we can extract it from cluster from openshift-config project.
               #oc extract secret/mysecret --to=Downloads/ -n openshift-config
-It will be retrieved under Downloads directory with file name htpasswd
-We can add the new user in existing file
+2. It will be retrieved under Downloads directory with file name htpasswd. We can add the new user in existing file
               #htpasswd -b -B Downloads/htpasswd <username> <password>
 <img width="1532" height="622" alt="image" src="https://github.com/user-attachments/assets/b115a830-14a6-429e-99fb-770ac5d9a45a" />
-Whenever new user is added, it needs to be updated in secret (means from local to cluster).
+3. Whenever new user is added, it needs to be updated in secret (means from local to cluster).
               #oc set data secret/mysecret --from-file htpasswd=Downloads/htpasswd -n openshift-config
-Onces its updated, we can see the oauth pod will get synced up as a reflecting of cluster updation
+4. Onces its updated, we can see the oauth pod will get synced up as a reflecting of cluster updation
 <img width="1542" height="486" alt="image" src="https://github.com/user-attachments/assets/00292e38-a2df-4018-b663-b659361cbbae" />
 
- Command to delete the secrets:
+ 5.Command to delete the secrets:
                #oc delete secret mysecret -n openshift-config
  
 
