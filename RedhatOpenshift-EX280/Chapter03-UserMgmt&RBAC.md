@@ -1,7 +1,7 @@
 **Chapter:03 - User Management**
 
-#oc get identity
-#oc whoami -t
+1. #oc get identity
+2. #oc whoami -t
 To get the pod details of another project(namespace) // -n -> namespace , openshift-authentication -> project name
 whenever user gets created in openshift cluster, those details are maintained in oauth-pod under "openshift-authentication"
  namespace. 
