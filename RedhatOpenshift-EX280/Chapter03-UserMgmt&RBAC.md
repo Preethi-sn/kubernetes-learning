@@ -49,6 +49,7 @@ spec:
       fileData:
         name: mysecret 
 ```
+
 In above yaml file, we are just mentioning secret name under fileData and provide the name for identityProvider. no other changes are required.
 4. To get the oauth yaml file syntax. 
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/authentication_and_authorization/configuring-identity-providers#identity-provider-htpasswd-CR_configuring-htpasswd-identity-provider
