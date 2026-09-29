@@ -8,12 +8,22 @@ By default, every new user getting created in Opensshift cluster, will get a pro
               Cluster Role: "self-provisioner"
 
 To list the group which are having cluster role binding role assigned
+
            ``` oc get clusterrolebinding -o wide | grep -E 'ROLE|self-provisioner'  ```
 
 Confirm self-provisioner cluster role assigned to the system:authenticated:oauth group
+
        ```   #oc describe clusterrolebindings self-provisioners ```
 
 Remove the cluster rule from group as below:
+
          ``` #oc adm policy remove-cluster-role-from-group self-provisioner system:authenticated:oauth ```
+         
 Once its removed userever user logged in will not get the promt to create new project(not allowed to create project)
 
+Login to project/create new project and Grand project administrator privilege to user
+
+          ```
+          oc get project <project_name> or oc new-project <project-name>
+          oc policy add-role-to-user admin leader
+          ```
