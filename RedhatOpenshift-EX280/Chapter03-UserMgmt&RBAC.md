@@ -6,14 +6,16 @@ oc login -u kubeadmin -p yyUai-QPoXs-xBYSN-UJITn https://api.ocp4.example.com:64
 4. #oc whoami -t
 ## Step:1 - Create user using htpasswd tool
        1. To create user, we have to use htpasswd tool. check if its installed (#htpasswd). If not, install it.
-       **sudo yum install httpd-tools -y**
+                     **sudo yum install httpd-tools -y**
        2. Create directory **#mkdir user-details** directory name can be anything.
        3. Create user, **#htpasswd -c -b -B user-details/users.config <username> <password>**
            -c - create users.config file (use this -c option when we are creating the user.config file first time. from next time dont use c as it will create new config file and delete the existing file and create new and old username will also get removed)
            -b - is to inject the user password in the file along with username
            -B - to secure the password safely in users.config file.
 <img width="1521" height="410" alt="image" src="https://github.com/user-attachments/assets/fd9e4430-7975-447f-ba0c-3b77e37412e6" />
-## step:2 - Convert the user config into secrets and inject the secret in openshift-config namespace
+
+## Step:2 - Convert the user config into secrets and inject the secret in openshift-config namespace
+
        1. To get the list of existing secrets in openshift-config namespace.
                  **#oc get secrets -n openshift-config**
        2. To create secret for user config file
