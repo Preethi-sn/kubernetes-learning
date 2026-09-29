@@ -17,17 +17,36 @@ oc login -u kubeadmin -p yyUai-QPoXs-xBYSN-UJITn https://api.ocp4.example.com:64
 ## Step:2 - Convert the user config into secrets and inject the secret in openshift-config namespace
 
        1. To get the list of existing secrets in openshift-config namespace.
-                 **#oc get secrets -n openshift-config**
+                 #oc get secrets -n openshift-config
        2. To create secret for user config file
-                  **#oc create secret generic mysecret --from-file htpasswd=user-details/users.config -n openshift-config**
+                  #oc create secret generic mysecret --from-file htpasswd=user-details/users.config -n openshift-config**
                              a. generic - is type of secret
                              b. mysecret - secret name
-       3. for mysecret, yaml file will be created so to view the file **#oc get secret mysecret -o yaml -n openshift-config**
+       3. for mysecret, yaml file will be created so to view the file 
+                     #oc get secret mysecret -o yaml -n openshift-config
 
-   <img width="1542" height="557" alt="image" src="https://github.com/user-attachments/assets/d162f9fd-93f3-4a59-a3c4-8135da2f18e5" />
+<img width="1565" height="652" alt="image" src="https://github.com/user-attachments/assets/5cc78b0c-8225-4834-804d-68419444cab1" />
 
-
-
+## Step:3 - Syncup openshift-config and opendhift-authenticatgion through oauth file
+              If existing file is there we have to replace it else we have to create new oauth file.
+       1. View the oauth yaml file
+              #oc get oauth cluster -o yaml
+       2.If the oauth.yaml file is not available in cluster by default, we have to create it else we can try to update the existing file with our secret if not we can replace the existing oauth with new oauth file.
+       3. vi oauth.yaml
+```       
+apiVersion: config.openshift.io/v1
+kind: OAuth
+metadata:
+  name: cluster
+spec:
+  identityProviders:
+  - name: my_first_IDP 
+    mappingMethod: claim 
+    type: HTPasswd
+    htpasswd:
+      fileData:
+        name: mysecret 
+```
 
 
    
