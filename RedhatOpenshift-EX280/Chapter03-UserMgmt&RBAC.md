@@ -28,11 +28,11 @@ oc login -u kubeadmin -p yyUai-QPoXs-xBYSN-UJITn https://api.ocp4.example.com:64
 <img width="1565" height="652" alt="image" src="https://github.com/user-attachments/assets/5cc78b0c-8225-4834-804d-68419444cab1" />
 
 ## Step:3 - Syncup openshift-config and opendhift-authenticatgion through oauth file
-              If existing file is there we have to replace it else we have to create new oauth file.
-       1. View the oauth yaml file
-              #oc get oauth cluster -o yaml
-       2.If the oauth.yaml file is not available in cluster by default, we have to create it else we can try to update the existing file with our secret if not we can replace the existing oauth with new oauth file.
-       3. vi oauth.yaml
+If existing file is there we have to replace it else we have to create new oauth file.
+1. View the oauth yaml file
+       #oc get oauth cluster -o yaml
+2.If the oauth.yaml file is not available in cluster by default, we have to create it else we can try to update the existing file with our secret if not we can replace the existing oauth with new oauth file.
+3. vi oauth.yaml
 ```       
 apiVersion: config.openshift.io/v1
 kind: OAuth
@@ -47,7 +47,8 @@ spec:
       fileData:
         name: mysecret 
 ```
-
+In above yaml file, we are just mentioning secret name under fileData and provide the name for identityProvider. no other changes are required.
+[To get the oauth yaml file syntax] (https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/authentication_and_authorization/configuring-identity-providers#identity-provider-htpasswd-CR_configuring-htpasswd-identity-provider)
 
    
  To get the pod details of another project(namespace) // -n -> namespace , openshift-authentication -> project name
