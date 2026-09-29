@@ -76,6 +76,7 @@ https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/
 
  5.Command to delete the secrets:
                #oc delete secret mysecret -n openshift-config
+               
  6. Command to delete the identity and users
            #oc delete identity --all
            #oc delete user --all
