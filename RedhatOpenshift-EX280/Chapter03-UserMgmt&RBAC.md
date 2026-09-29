@@ -1,4 +1,7 @@
 # Chapter:03 - User Management
+
+<img width="1348" height="723" alt="user create flow mechanism" src="https://github.com/user-attachments/assets/4010df34-2e94-4824-a5f4-4ef9738268bd" />
+
 1. Initiate lab: To make the cluster ready for the excerise
 2. login with admini,developer,kubadmin
 oc login -u kubeadmin -p yyUai-QPoXs-xBYSN-UJITn https://api.ocp4.example.com:6443
@@ -77,4 +80,15 @@ whenever user gets created in openshift cluster, those details are maintained in
  namespace.
 **#oc get pod -n openshift-authentication**
  <img width="1355" height="111" alt="image" src="https://github.com/user-attachments/assets/36542432-f2d4-4001-8ac4-3e607b2a332f" />
-**oc get oauth cluster -o yaml**
+
+
+To get the Users list and IDP details
+<img width="1542" height="592" alt="image" src="https://github.com/user-attachments/assets/bcfbaaeb-ea2b-45d7-aace-5cecde81defb" />
+
+
+
+
+
+
+
+
