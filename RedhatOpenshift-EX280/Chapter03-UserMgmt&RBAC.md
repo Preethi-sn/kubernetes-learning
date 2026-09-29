@@ -51,6 +51,7 @@ spec:
 ```
 
 In above yaml file, we are just mentioning secret name under fileData and provide the name for identityProvider. no other changes are required.
+
 4. To get the oauth yaml file syntax. 
 https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/authentication_and_authorization/configuring-identity-providers#identity-provider-htpasswd-CR_configuring-htpasswd-identity-provider
 5. Once oauth file is ready. run the below command to replace it
@@ -59,6 +60,7 @@ https://docs.redhat.com/en/documentation/openshift_container_platform/4.18/html/
 6. As soon as oauth file is replaced/updated, you can see the oauth pod restarted to syncup the update. 
               #oc get pod -n openshift-authentication
 7. whatever users are added in user config, they can able to login now.
+
 <img width="1530" height="472" alt="image" src="https://github.com/user-attachments/assets/9a02f3e8-1e5e-4282-8fb2-0bbdd3bddf2b" />
 
 ## Extract the secrets from cluster and add the new user in existing file
