@@ -15,7 +15,7 @@ There are 3 types of secure routes.
 
 Mostly organization expose their applicaion using passthrough termnation method.
 
-## Passthorugh Method:
+## Passthrough Termination:
 
 ### 1. Create CSR file(certificate Signing Request) and key
 
@@ -56,8 +56,15 @@ Now we have to create passthrough secure route. With this route hostname "phpsec
 <img width="1527" height="407" alt="image" src="https://github.com/user-attachments/assets/88ba2cb1-b212-42f3-9056-e00410f279a4" />
 
 
+## Edge Termination
 
+In edge termination method, we can use either default certificate or custom certificate. 
 
+Here certificates are passed while creating the route literally.
+
+Once the application is deployed, we can create route with edge type and access the app with route host name in browser.
+
+<img width="1530" height="232" alt="image" src="https://github.com/user-attachments/assets/31b40f19-906d-4194-ba61-e666040f2941" />
 
 
 
