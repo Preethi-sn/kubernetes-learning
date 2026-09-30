@@ -37,14 +37,19 @@ Mostly organization expose their applicaion using passthrough termnation method.
 <img width="1537" height="362" alt="image" src="https://github.com/user-attachments/assets/7fa2f494-2c44-4b3c-9bca-2497c87ce381" />
 
 ```
-  oc create secret tls tls-certs --cert=apps_ocp4_example_com.crt --key=apps_ocp4_example_com.key 
-  oc get secrets tls-certs
+  #oc create secret tls tls-certs --cert=apps_ocp4_example_com.crt --key=apps_ocp4_example_com.key 
+  #oc get secrets tls-certs
 ```
 
 ### 4. Application is deployed
 
 <img width="1542" height="656" alt="image" src="https://github.com/user-attachments/assets/b4863ecc-3891-43d0-b4eb-a32fd294e505" />
 
+```
+#oc new-app --name=php-secure --image=quay.io/redhattraining/php-ssl:v1.1
+#oc logs php-secure-854db6c6db-xdrhm
+#oc get deployment
+```
 
 ### 5. Deployed application went into crashloopbackoff error and log says SSL certificate doesn't exist.
 
@@ -65,6 +70,14 @@ Now we have to create passthrough secure route. With this route hostname "phpsec
 
 <img width="1527" height="407" alt="image" src="https://github.com/user-attachments/assets/88ba2cb1-b212-42f3-9056-e00410f279a4" />
 
+```
+#oc set volumes --type secret --secret-name tls-certs --name sec-vol --mount-path /usr/local/etc/ssl/certs --add deployment/php-secure
+#oc get service
+#oc create route passthrough --service=php-secure --port=8443 --hostname=phpsecure.apps.ocp4.example.com
+#oc get route
+#https://phpsecure.apps.ocp4.example.com
+#curl -v https://phpsecure.apps.ocp4.example.com -k
+```
 
 ## Edge Termination
 
@@ -77,6 +90,12 @@ Once the application is deployed, we can create route with edge type and access 
 <img width="1530" height="232" alt="image" src="https://github.com/user-attachments/assets/31b40f19-906d-4194-ba61-e666040f2941" />
 
 
-
+```
+#oc new-project demo9
+#oc new-app --name=nginx-secure --image=quay.io/redhattraining/hello-world-nginx
+#oc create route edge --service=nginx-secure --cert=apps_ocp4_example_com.crt --key=apps_ocp4_example_com.key  --hostname=nginxsec.apps.ocp4.example.com
+#oc get route
+#https://nginxsec.apps.ocp4.example.com 
+```
 
 
