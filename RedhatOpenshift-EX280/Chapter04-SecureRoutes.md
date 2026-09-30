@@ -25,11 +25,21 @@ Mostly organization expose their applicaion using passthrough termnation method.
 
 <img width="1525" height="712" alt="image" src="https://github.com/user-attachments/assets/4835f86b-ba12-4408-a52e-d17e4e90b22b" />
 
+```
+  #openssl req -new -newkey rsa:2048 -nodes -out apps_ocp4_example_com.csr -keyout apps_ocp4_example_com.key -subj "/C=IN/ST=TN/L=chennai/O=vectra/OU=prod/CN=apps.ocp4.example.com"
+  #openssl x509 -req -days 30 -signkey apps_ocp4_example_com.key -in apps_ocp4_example_com.csr -out apps_ocp4_example_com.crt
+  #openssl x509 -in apps_ocp4_example_com.crt -noout -text 
+```
+
 
 ### 3. Create secret with type TLS to store these files. 
 
 <img width="1537" height="362" alt="image" src="https://github.com/user-attachments/assets/7fa2f494-2c44-4b3c-9bca-2497c87ce381" />
 
+```
+  oc create secret tls tls-certs --cert=apps_ocp4_example_com.crt --key=apps_ocp4_example_com.key 
+  oc get secrets tls-certs
+```
 
 ### 4. Application is deployed
 
