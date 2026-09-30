@@ -6,6 +6,7 @@ Pod-IP - Pod Ip's are used to interact with each other. Using pod ip one pod can
 
 If pods are in same cluster, one pod can interact with other no matter on same project/different project and same/different node. Just it should be in same cluster.
 
+```
  Login to the project: oc new-project or oc project  
  
  deploy app: oc new-app --name=<appname> --image=<image-url>
@@ -17,3 +18,4 @@ If pods are in same cluster, one pod can interact with other no matter on same p
  access the application which get deployed on same pod/different pod with curl command
  
  curl http://<app-ip>:<app-port>
+```
