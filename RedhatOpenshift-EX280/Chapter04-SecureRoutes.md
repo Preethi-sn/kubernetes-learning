@@ -17,11 +17,14 @@ Mostly organization expose their applicaion using passthrough termnation method.
 
 ## Passthrough Termination:
 
-### 1. Create CSR file(certificate Signing Request) and key
+### 1. Create the TLS Certificate and the Private key
+
+                a. Generate Key
+	        b. Generate CSR (certificate signing request)
+	        c. Generate Certificate
 
 <img width="1542" height="477" alt="image" src="https://github.com/user-attachments/assets/b5c3fbc6-844b-4cd0-ba97-2d52f40e3441" />
 
-### 2. Create CRT file using CSR and key file
 
 <img width="1525" height="712" alt="image" src="https://github.com/user-attachments/assets/4835f86b-ba12-4408-a52e-d17e4e90b22b" />
 
@@ -32,7 +35,7 @@ Mostly organization expose their applicaion using passthrough termnation method.
 ```
 
 
-### 3. Create secret with type TLS to store these files. 
+### 2. Create secret with type TLS to store these files. 
 
 <img width="1537" height="362" alt="image" src="https://github.com/user-attachments/assets/7fa2f494-2c44-4b3c-9bca-2497c87ce381" />
 
@@ -41,7 +44,7 @@ Mostly organization expose their applicaion using passthrough termnation method.
   #oc get secrets tls-certs
 ```
 
-### 4. Application is deployed
+### 3. Application is deployed
 
 <img width="1542" height="656" alt="image" src="https://github.com/user-attachments/assets/b4863ecc-3891-43d0-b4eb-a32fd294e505" />
 
@@ -51,7 +54,7 @@ Mostly organization expose their applicaion using passthrough termnation method.
 #oc get deployment
 ```
 
-### 5. Deployed application went into crashloopbackoff error and log says SSL certificate doesn't exist.
+### 4. Deployed application went into crashloopbackoff error and log says SSL certificate doesn't exist.
 
 This because we didn't inject the certificates in the deployment.
 
@@ -83,9 +86,11 @@ Now we have to create passthrough secure route. With this route hostname "phpsec
 
 In edge termination method, we can use either default certificate or custom certificate. 
 
-Here certificates are passed while creating the route literally.
+Here TLS certificate and key are passed while creating the route literally.
 
 Once the application is deployed, we can create route with edge type and access the app with route host name in browser.
+
+Here we used existing TLS certificate and key which created during passthrough demo.
 
 <img width="1530" height="232" alt="image" src="https://github.com/user-attachments/assets/31b40f19-906d-4194-ba61-e666040f2941" />
 
