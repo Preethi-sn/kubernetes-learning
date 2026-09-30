@@ -1,5 +1,3 @@
-<img width="1502" height="352" alt="image" src="https://github.com/user-attachments/assets/7cbe6725-a327-49bd-a62c-81c9cfcfc655" /># Openshift Networking basics
-
 ## OCP - Network
 
 Network configuration of all the resources are configured. CIDR range of service,pod everything is declared here.
