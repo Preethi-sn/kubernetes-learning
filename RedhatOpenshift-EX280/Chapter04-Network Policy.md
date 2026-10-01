@@ -25,3 +25,36 @@ Project nam is specified in metadata namespace.
 
 
 <img width="1391" height="467" alt="image" src="https://github.com/user-attachments/assets/dd801015-55b1-4b3c-83d6-f3703586f8c4" />
+
+
+
+
+## Allow only specific pod to access my application
+
+
+<img width="1031" height="441" alt="Nw policy-allow" src="https://github.com/user-attachments/assets/6a8fdd67-c518-4a04-b431-92dbce1ee663" />
+
+```
+cat > allow-specific.yaml <<'EOF'
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-specific
+  namespace: demo1
+spec:
+  podSelector:
+    matchLabels:
+      deployment: web1
+  ingress:
+    - from:
+        - namespaceSelector:
+            matchLabels:
+              project: demo2
+          podSelector:
+            matchLabels:
+              deployment: myclient
+      ports:
+        - port: 8080
+          protocol: TCP
+EOF
+```
