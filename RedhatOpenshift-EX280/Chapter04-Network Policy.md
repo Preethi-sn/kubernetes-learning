@@ -1,10 +1,14 @@
 # Network Policy
 
-      We can restrict the pod access by setting Network policies.
+We can restrict the pod access by setting Network policies. Example, no other pods should access my pod, only specific pod can access my application and restrict all other pod. 
 
-## Deny-All Policy
+Based on our requirement we can create network policy using yaml file and apply.
 
-Once application is deployed. Create yaml file for network policy. As per below file. under spec, podSelector: {} is empty. it means none of the pod should access this application(no ingress traffic)
+## Deny-All Policy (Ingress policy)
+
+Once application is deployed. Create yaml file for network policy. As per below file, under spec, podSelector: {} is empty. it means none of the pod should access this application (no ingress traffic) exist on the project demo10. and there wont we any restriction for egress policy.
+
+Project nam is specified in metadata namespace.
 
                     cat deny-all.yaml
                     apiVersion: networking.k8s.io/v1
