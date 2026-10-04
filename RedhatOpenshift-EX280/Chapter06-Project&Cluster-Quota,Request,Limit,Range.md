@@ -22,6 +22,15 @@ If you see the #oc describe pod <podname>, we can see the request and limit set 
 
 <img width="712" height="162" alt="image" src="https://github.com/user-attachments/assets/794101a4-5210-4e8e-a267-080991230824" />
 
+```
+   #oc new-app --name testapp --image=quay.io/redhattraining/loadtest
+  #oc set resources --requests memory=10Mi deployment/testapp --> set the standard request 
+  #oc describe node master01
+  #oc set resources --requests memory=10Gi deployment/testapp --> set the higher value request pod unable to run
+  #oc describe pod testapp-5cc69f758c-bxknr
+  #oc set resources --requests memory=10Mi deployment/testapp  --> change to existing stage
+  #oc set resources  --limits memory=100Mi deployment/testapp  --> set the limits
+````
 
 create insecure rotue and try to do the load test
 
