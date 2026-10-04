@@ -48,3 +48,25 @@ create insecure rotue and try to do the load test
 
 <img width="1540" height="185" alt="image" src="https://github.com/user-attachments/assets/3d879d17-88b4-428d-b188-e786266bacc6" />
 
+## Set the quota for particular project:
+
+Setting quota limit to particular project and check the currently used and available quota
+
+               #oc create quota project-quota --hard pods=5,services=5,secrets=15,configmaps=5
+               #oc describe quota project-quota 
+
+
+<img width="1512" height="85" alt="image" src="https://github.com/user-attachments/assets/60e24e89-cb2c-4355-8178-6436f3481e07" />
+
+
+<img width="1017" height="320" alt="image" src="https://github.com/user-attachments/assets/6e3ed25c-662e-4997-8344-5082010c4cc2" />
+
+
+As soon as we deployed application and scale up the pod, quota value gets changed and we can't increase beyond the quota limit
+
+<img width="1300" height="360" alt="image" src="https://github.com/user-attachments/assets/8c7f1095-6a1a-4e35-853c-c4f5c1a57b6a" />
+
+
+
+
+
