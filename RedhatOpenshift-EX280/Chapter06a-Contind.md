@@ -8,6 +8,9 @@ If we set the quota limit to project and try to deploy app it wont work. We have
 
 Below error is from #oc get events
 
+Reason for ERROR: Bcz quota limit is set in the project level. so whatever resources is created under the project should come up with the limit range by default.
+so we are creating limit range resource for container.
+
 <img width="1542" height="340" alt="image" src="https://github.com/user-attachments/assets/5585ef7b-e773-4502-b063-8601d5dbc2f9" />
 
 Creating the Limit Range resource
