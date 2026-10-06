@@ -33,7 +33,7 @@ Project nam is specified in metadata namespace.
 
 Here in this example, we are creating Network Policy to allow only one specific pod to access my applicaion.
 
-    Specific we have to consider my application as destination and specfic pod is source (source is trying to access the destination).
+Specific we have to consider my application as destination and specfic pod is source (source is trying to access the destination).
 
 To create network policy, we need yaml file. Below details need to be gather before creating the yaml file.
 
@@ -62,25 +62,50 @@ kind: NetworkPolicy
 apiVersion: networking.k8s.io/v1
 metadata:
   name: allow-specific
-  namespace: demo1
+  namespace: <destination-project-name>
 spec:
   podSelector:
     matchLabels:
-      deployment: web1
+      <destination-pod-label-name>
   ingress:
     - from:
       - namespaceSelector:
           matchLabels:
-            project: myclient
+            project: <source-project-name>
         podSelector:
           matchLabels:
-            deployment: myclient
+            <source-pod-label-name>
       ports:
-      - port: 8080
-        protocol: TCP
+      - port: <source-port>
+        protocol: <source-protocol>
 [student@workstation ~]$ 
 
 ```
 
+<img width="745" height="666" alt="image" src="https://github.com/user-attachments/assets/855988e4-a341-49bb-bef1-37dbc16f3e78" />
+
+Once file is ready, you can create the policy on destination 
+
+                      oc create -f allow-specific.yaml
+                      oc describe networkpolicy allow-specific --> we can verify if the specificed details or correct or need any changes
+                      oc edit networkpolicy allow-specific 
+
+
+
+
+<img width="1206" height="467" alt="image" src="https://github.com/user-attachments/assets/fab499a3-f0f7-4561-a5a7-9ab71b92d186" />
+
+
+Onces everything is ready, we can try to access the pod from source pod by logging
+
+
+<img width="1565" height="746" alt="image" src="https://github.com/user-attachments/assets/589aa128-f61b-4af8-a6aa-ee30824ce0bd" />
+
+<img width="1532" height="340" alt="image" src="https://github.com/user-attachments/assets/8b94aadf-62e8-43d2-a15a-81f358c8c85d" />
+
+
+Here in this example, demo1 is destination and my client is source. from my client pod, we can access the demo1 but from demo2 we cant access demo1.
+
+This proves the applicaion reachable only for specific application.
 
 
