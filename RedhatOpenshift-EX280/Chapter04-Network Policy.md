@@ -31,7 +31,20 @@ Project nam is specified in metadata namespace.
 
 ## Allow only specific pod to access my application
 
+Here in this example, we are creating Network Policy to allow only one specific pod to access my applicaion.
 
+    Specific we have to consider my application as destination and specfic pod is source (source is trying to access the destination).
+
+To create network policy, we need yaml file. Below details need to be gather before creating the yaml file.
+
+                                    Source :
+                                        Project Label name, Pod Label name, Port and Protocol
+
+                                    Destination:
+                                        Project name, Pod Label name.
+            
+
+<img width="1031" height="441" alt="Nw policy-allow" src="https://github.com/user-attachments/assets/6a8fdd67-c518-4a04-b431-92dbce1ee663" />
 
 Getting pod label,port,protocol of source pod details:
 
@@ -43,31 +56,8 @@ Setting Label for project:
 <img width="1206" height="602" alt="image" src="https://github.com/user-attachments/assets/1c1c1ff2-b43a-443c-992a-e3af69d21eb9" />
 
 
-<img width="1031" height="441" alt="Nw policy-allow" src="https://github.com/user-attachments/assets/6a8fdd67-c518-4a04-b431-92dbce1ee663" />
-
 ```
-cat > allow-specific.yaml <<'EOF'
-kind: NetworkPolicy
-apiVersion: networking.k8s.io/v1
-metadata:
-  name: allow-specific
-  namespace: demo1
-spec:
-  podSelector:
-    matchLabels:
-      deployment: web1
-  ingress:
-    - from:
-        - namespaceSelector:
-            matchLabels:
-              project: demo2
-          podSelector:
-            matchLabels:
-              deployment: myclient
-      ports:
-        - port: 8080
-          protocol: TCP
-EOF
+
 ```
 
 
