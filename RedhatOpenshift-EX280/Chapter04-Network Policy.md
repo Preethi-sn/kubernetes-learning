@@ -32,6 +32,17 @@ Project nam is specified in metadata namespace.
 ## Allow only specific pod to access my application
 
 
+
+Getting pod label,port,protocol of source pod details:
+
+<img width="1432" height="217" alt="image" src="https://github.com/user-attachments/assets/7369d093-311f-435a-8fbb-b5e7d3cd1cc3" />
+
+
+Setting Label for project:
+
+<img width="1206" height="602" alt="image" src="https://github.com/user-attachments/assets/1c1c1ff2-b43a-443c-992a-e3af69d21eb9" />
+
+
 <img width="1031" height="441" alt="Nw policy-allow" src="https://github.com/user-attachments/assets/6a8fdd67-c518-4a04-b431-92dbce1ee663" />
 
 ```
@@ -58,3 +69,6 @@ spec:
           protocol: TCP
 EOF
 ```
+
+
+
