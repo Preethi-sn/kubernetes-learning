@@ -57,6 +57,28 @@ Setting Label for project:
 
 
 ```
+[student@workstation ~]$ cat allow-specific.yaml 
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: allow-specific
+  namespace: demo1
+spec:
+  podSelector:
+    matchLabels:
+      deployment: web1
+  ingress:
+    - from:
+      - namespaceSelector:
+          matchLabels:
+            project: myclient
+        podSelector:
+          matchLabels:
+            deployment: myclient
+      ports:
+      - port: 8080
+        protocol: TCP
+[student@workstation ~]$ 
 
 ```
 
