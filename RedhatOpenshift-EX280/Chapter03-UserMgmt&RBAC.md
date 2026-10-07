@@ -4,17 +4,22 @@
 
 1. Initiate lab: To make the cluster ready for the excerise
 2. login with admini,developer,kubadmin
-oc login -u kubeadmin -p yyUai-QPoXs-xBYSN-UJITn https://api.ocp4.example.com:6443
-3. #oc new-project user-demo -> create new project
-4. #oc whoami -t
+
+           oc login -u kubeadmin -p yyUai-QPoXs-xBYSN-UJITn https://api.ocp4.example.com:6443
+           #oc new-project user-demo -> create new project
+           #oc whoami -t
+   
 ## Step:1 - Create user using htpasswd tool
 1. To create user, we have to use htpasswd tool. check if its installed (#htpasswd). If not, install it.
+   
                      **sudo yum install httpd-tools -y**
-2. Create directory **#mkdir user-details** directory name can be anything.
-3. Create user, **#htpasswd -c -b -B user-details/users.config <username> <password>**
+3. Create directory **#mkdir user-details** directory name can be anything.
+4. Create user, **#htpasswd -c -b -B user-details/users.config <username> <password>**
+           ```
            -c - create users.config file (use this -c option when we are creating the user.config file first time. from next time dont use c as it will create new config file and delete the existing file and create new and old username will also get removed)
            -b - is to inject the user password in the file along with username
            -B - to secure the password safely in users.config file.
+           ```
 <img width="1521" height="410" alt="image" src="https://github.com/user-attachments/assets/fd9e4430-7975-447f-ba0c-3b77e37412e6" />
 
 ## Step:2 - Convert the user config into secrets and inject the secret in openshift-config namespace
